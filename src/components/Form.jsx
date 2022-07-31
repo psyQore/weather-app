@@ -4,7 +4,7 @@ import useWeather from "../hooks/useWeather";
 const Form = () => {
   const [alert, setAlert] = useState("");
 
-  const { search, searchData , consultWeather } = useWeather();
+  const { search, searchData, consultWeather } = useWeather();
   const { city, country } = search;
 
   const handleSubmit = (e) => {
@@ -15,7 +15,7 @@ const Form = () => {
       return;
     }
 
-    consultWeather(search)
+    consultWeather(search);
   };
 
   return (
