@@ -1,17 +1,28 @@
 import useWeather from "../hooks/useWeather";
 
 const Result = () => {
+  const { result } = useWeather();
 
-    const { result } = useWeather();
+  const { name, main } = result;
 
-    const { name } = result;
-
+  console.log(result);
 
   return (
-    <div className="contenedor">
-        <h2>El clima de {name} es: </h2>
+    <div className="contenedor weather">
+      <h2>El Clima de {name} es: </h2>
+      <p>
+        {parseInt(main.temp)} <span>&#x2103;</span>
+      </p>
+      <div className="temp_min_max">
+        <p>
+          Mín: {main.temp_min} <span>&#x2103;</span>
+        </p>
+        <p>
+          Máx: {main.temp_max} <span>&#x2103;</span>
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Result
+export default Result;
