@@ -15,11 +15,16 @@ const WeatherProvider = ({ children }) => {
     });
   };
 
+  const consultWeather = (data) => {
+    console.log(data);
+  }
+
   return (
     <WeatherContext.Provider 
         value={{ 
             search, 
-            searchData 
+            searchData,
+            consultWeather
         }}>
       {children}
     </WeatherContext.Provider>
