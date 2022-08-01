@@ -9,7 +9,8 @@ const WeatherProvider = ({ children }) => {
     country: "",
   });
   const [result, setResult] = useState({});
-
+  const [loading, setLoading] = useState(false);
+  const [noResult, setNoResult] = useState(false);
 
   const searchData = (e) => {
     setSearch({
@@ -19,6 +20,9 @@ const WeatherProvider = ({ children }) => {
   };
 
   const consultWeather = async (data) => {
+    setResult("")
+    setLoading(true);
+    setNoResult(false)
     try {
       const { city, country } = data;
 
@@ -33,7 +37,9 @@ const WeatherProvider = ({ children }) => {
 
       setResult(resWeather.data);
     } catch (error) {
-      console.log(error);
+      setNoResult("No hay resultados");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -43,7 +49,9 @@ const WeatherProvider = ({ children }) => {
         search,
         searchData,
         consultWeather,
-        result
+        result,
+        loading,
+        noResult,
       }}
     >
       {children}

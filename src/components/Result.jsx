@@ -1,11 +1,9 @@
 import useWeather from "../hooks/useWeather";
+import Spinner from "./Spinner";
 
 const Result = () => {
   const { result } = useWeather();
-
   const { name, main } = result;
-
-  console.log(result);
 
   return (
     <div className="contenedor weather">
